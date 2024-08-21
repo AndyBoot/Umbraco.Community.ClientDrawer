@@ -1,0 +1,45 @@
+{
+  "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+  "AlternatePackageNames": [
+    "ClientDrawer",
+    "Client Drawer"
+  ],
+  "AuthorDetails": {
+    "Name": "Andy Boot",
+    "Description": "Andy is a Senior Web Developer (at Pixel Builders), Umbraco Certified Master and Umbraco MVP with over 10 years of .Net development experience focusing mainly on CMS platforms such as Umbraco & Kentico.",
+    "Url": "https://github.com/AndyBoot",
+    "ImageUrl": "https://github.com/AndyBoot.png",
+    "Contributors": [
+      {
+        "Name": "Andy Boot",
+        "Url": "https://github.com/AndyBoot"
+      }
+    ],
+    "SyncContributorsFromRepository": true
+  },
+  "Category": "Editor Tools",
+  "Description": "A package for providing your clients a small toolbox of useful links and information. If your website is one of many sites based on a shared platform then this package is perfect for you.",
+  "LicenseTypes": [ "Free" ],
+  "IssueTrackerUrl": "https://github.com/AndyBoot/Umbraco.Community.ClientDrawer/issues",
+  "PackageType": "Package",
+  "Tags": [ "ClientDrawer", "Client", "Drawer", "Changelog", "Change", "Log", "Logs", "Environment", "Environments", "HeaderApp" ],
+  "Title": "Client Drawer",
+  "Screenshots": [
+    {
+      "ImageUrl": "https://github.com/AndyBoot/Umbraco.Community.ClientDrawer/blob/main/images/screenshot1.png",
+      "Caption": "Screenshot 1"
+    },
+    {
+      "ImageUrl": "https://github.com/AndyBoot/Umbraco.Community.ClientDrawer/blob/main/images/screenshot2.png",
+      "Caption": "Screenshot 2"
+    },
+    {
+      "ImageUrl": "https://github.com/AndyBoot/Umbraco.Community.ClientDrawer/blob/main/images/screenshot3.png",
+      "Caption": "Screenshot 3"
+    },
+    {
+      "ImageUrl": "https://github.com/AndyBoot/Umbraco.Community.ClientDrawer/blob/main/images/screenshot4.png",
+      "Caption": "Screenshot 4"
+    }
+  ]
+}

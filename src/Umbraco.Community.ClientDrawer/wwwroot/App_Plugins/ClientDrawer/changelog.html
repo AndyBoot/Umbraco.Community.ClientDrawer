@@ -1,0 +1,36 @@
+<div style="height: 100%" ng-controller="ClientDrawer.Controller as vm">
+    <umb-editor-view>
+
+        <div class="umb-editor-header">
+            <div class="flex items-center" style="height: 100%;">
+                <div class="flex items-center" style="flex: 1;">
+                    <div class="umb-panel-header-name">
+                        {{vm.title}}: Change log</div>
+                </div>
+            </div>
+        </div>
+        <umb-editor-container>
+            <table class="table table-striped">
+                <tr>
+                    <th style="width: 20%;">Date</th>
+                    <th>Changes</th>
+                </tr>
+                <tr ng-repeat="entry in vm.simplifiedChangeLogEntries">
+                    <td>{{entry.date}}</td>
+                    <td>{{entry.change}}</td>
+                </tr>
+                <!-- More rows as needed -->
+            </table>
+        </umb-editor-container>
+        <umb-editor-footer>
+            <umb-editor-footer-content-right>
+                <umb-button type="button"
+                            button-style="link"
+                            label-key="general_close"
+                            shortcut="esc"
+                            action="model.close()">
+                </umb-button>
+            </umb-editor-footer-content-right>
+        </umb-editor-footer>
+    </umb-editor-view>
+</div>

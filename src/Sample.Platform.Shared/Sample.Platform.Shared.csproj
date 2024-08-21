@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Version>123.4.5.6</Version>
+		<StaticWebAssetBasePath>/</StaticWebAssetBasePath>
+		<ContentTargetFolders>.</ContentTargetFolders>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.8" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="changelog.xml" />
+		<EmbeddedResource Include="changelog.xml" />
+	</ItemGroup>
+
+</Project>

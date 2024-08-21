@@ -1,0 +1,94 @@
+﻿<div style="height: 100%" ng-controller="ClientDrawer.Controller as vm">
+    <umb-drawer-view>
+
+        <umb-drawer-header title="{{vm.title}}"
+                           description="{{vm.subtitle}}">
+        </umb-drawer-header>
+
+        <umb-drawer-content>
+            <div class="client-drawer__wrapper">
+                <!-- Links -->
+                <div ng-if="vm.environments.length > 0">
+                    <div class="client-drawer__badge" ng-repeat="environment in vm.environments track by $index">
+                        <umb-icon icon="{{environment.iconClass}}" style="{{ environment.isCurrent === true ? 'color: #2bc37c;' : 'color: #d42054;'}}" class="client-drawer__badge__icon-env"></umb-icon>
+                        <div class="client-drawer__badge__title">
+                            <div class="t"><span>{{environment.name}}</span><span class="umb-badge umb-badge--success umb-badge--xs" size="xs" color="success" ng-if="environment.isCurrent === true">Current</span></div>
+                            <small>
+                                <a href="#" ng-href="{{environment.primaryUrl}}" target="_blank" rel="noopener" class="link--text">{{environment.primaryUrl}}</a>
+                            </small>
+                        </div>
+                        <a href="#" ng-href="{{environment.umbracoUrl}}" target="_blank" title="Open `{{environment.name}}` Umbraco CMS backoffice" rel="noopener" class="link--icon" ng-if="environment.disableUmbracoUrl === false"><umb-icon icon="icon-umbraco" class="client-drawer__badge__icon-u"></umb-icon></a>
+                    </div>
+                </div>
+
+                <uui-box headline="Change log" class="client-drawer__changelog" ng-if="vm.changeLogEntries.length > 0">
+                    <uui-button slot="header-actions" look="outline" compact ng-click="vm.openChangeLogPanel()">View all</uui-button>
+                    <div ng-repeat="group in vm.changeLogEntries | limitTo: 3">
+                        <uui-menu-item label="{{group.formattedDate}}" has-children>
+                            <uui-badge slot="badge" color="default" look="placeholder">{{group.friendlyDatePeriod}}</uui-badge>
+                            <table class="table table-striped">
+                                <tr ng-repeat="change in group.changes">
+                                    <td>{{change}}</td>
+                                </tr>
+                            </table>
+                        </uui-menu-item>
+                    </div>
+                </uui-box>
+
+                <!-- System info -->
+                <div class="umb-help-section client-drawer__system-information" ng-if="vm.systemInformationEnabled === true">
+
+                    <div class="umb-help-list">
+                        <div class="umb-help-list-item__title-wrapper">
+                            <button type="button"
+                                    class="umb-help-list-item umb-help-list-item__content"
+                                    ng-click="vm.systemInfoDisplay = !vm.systemInfoDisplay"
+                                    aria-expanded="{{vm.systemInfoDisplay ===  true}}">
+                                <umb-icon class="mr1" icon="{{vm.systemInfoDisplay ? 'icon-navigation-down' : 'icon-navigation-right'}}"></umb-icon>
+                                <span class="flex-column items-start flex">
+                                    <span class="umb-help-list-item__group-title bold">System Information</span>
+                                </span>
+                            </button>
+                            <button ng-click="vm.copyInformation()"
+                                    class="btn-reset"
+                                    type="button"
+                                    size="30">
+                                <span class="">
+                                    <umb-icon icon="icon-documents" class="umb-help-list-item__icon"></umb-icon>
+                                </span>
+                            </button>
+                        </div>
+                        <div ng-if="vm.systemInfoDisplay === true">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>Assembly</th>
+                                    <th>Version</th>
+                                </tr>
+                                <tr ng-repeat="info in vm.systemInfo">
+                                    <td>{{info.name}}</td>
+                                    <td>{{info.data}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </umb-drawer-content>
+
+        <umb-drawer-footer>
+
+            <div class="flex justify-end">
+                <umb-button alias="close"
+                            type="button"
+                            shortcut="esc"
+                            button-style="link"
+                            label-key="general_close"
+                            action="vm.closeDrawer()">
+                </umb-button>
+            </div>
+
+        </umb-drawer-footer>
+
+    </umb-drawer-view>
+
+</div>

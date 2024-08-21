@@ -1,0 +1,87 @@
+.client-drawer {
+    &__wrapper {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    &__badge {
+        background: #fff;
+        border-radius: 3px;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.16);
+        display: block;
+        margin-bottom: 5px;
+        overflow: hidden;
+        padding: 10px 20px 10px 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+
+        a.link {
+            &--text {
+                text-decoration: none;
+                word-break: break-all;
+
+                &:active,
+                &:focus,
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            &--icon {
+                display: flex;
+
+                &:active,
+                &:focus,
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+
+        &__icon {
+            &-env {
+                color: #ffb2b0;
+                font-size: 36px;
+            }
+
+            &-u {
+                color: #1b264f;
+                font-size: 24px;
+            }
+        }
+
+        &__title {
+            color: #000;
+            display: block;
+            font-size: 15px;
+            font-weight: 700;
+            flex: 1;
+            word-break: break-word;
+
+            .t {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            small {
+                font-weight: 500;
+            }
+        }
+    }
+
+    &__changelog {
+        #header {
+            align-items: center;
+        }
+    }
+
+    &__system-information {
+        .table td {
+            word-break: break-word;
+        }
+    }
+}
