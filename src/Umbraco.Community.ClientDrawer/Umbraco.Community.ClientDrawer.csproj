@@ -22,7 +22,7 @@
 		<PackageProjectUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</RepositoryUrl>
 		<PackageIconUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer/blob/main/images/logo.png?raw=true</PackageIconUrl>
-		<!--<PackageReadmeFile>README.md</PackageReadmeFile>-->
+		<PackageReadmeFile>NUGET.md</PackageReadmeFile>
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
@@ -52,4 +52,15 @@
 		<PackageReference Include="Umbraco.Cms.Web.Website" Version="13.0.0" />
 		<PackageReference Include="Umbraco.Cms.Web.Common" Version="13.0.0" />
 	</ItemGroup>
+	
+	<ItemGroup>
+		<None Update="NUGET.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+	  <Exec Command="copy &quot;..\..\README.md&quot; NUGET.md" />
+	</Target>
 </Project>
