@@ -4,6 +4,7 @@ using Microsoft.Extensions.Options;
 using System.Reflection;
 using System.Xml.Serialization;
 using Umbraco.Cms.Core.Cache;
+using Umbraco.Cms.Web.BackOffice.Controllers;
 using Umbraco.Cms.Web.Common.Attributes;
 using Umbraco.Cms.Web.Common.Controllers;
 using Umbraco.Community.ClientDrawer.Models;
@@ -13,7 +14,7 @@ using static Umbraco.Community.ClientDrawer.Models.DataModel;
 namespace Umbraco.Community.ClientDrawer.Controllers;
 
 [PluginController("ClientDrawer")]
-public class DataController : UmbracoApiController
+public class DataController : UmbracoAuthorizedJsonController
 {
     private readonly AppSettingsModel _options;
     private readonly IWebHostEnvironment _env;

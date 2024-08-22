@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		..\.gitignore = ..\.gitignore
 		..\README.md = ..\README.md
-		..\umbraco-package.json = ..\umbraco-package.json
+		..\umbraco-marketplace.json = ..\umbraco-marketplace.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Platform.Shared", "Sample.Platform.Shared\Sample.Platform.Shared.csproj", "{C95110A3-50AA-46DC-AC5E-A1D5B4709577}"

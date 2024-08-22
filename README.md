@@ -160,6 +160,13 @@ If you're embedding this file as a resource within a DLL, also use the `ClientDr
 ```
 
 
+## Change Log
+
+|Version    |Description            |
+|-----------|---------------        |
+|1.0.1      |Security Fixes         |
+|1.0.0      |Initial                |
+
 ## Troubleshooting
 Coming soon
 

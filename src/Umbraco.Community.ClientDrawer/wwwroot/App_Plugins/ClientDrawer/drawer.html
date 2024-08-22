@@ -22,7 +22,7 @@
                 </div>
 
                 <uui-box headline="Change log" class="client-drawer__changelog" ng-if="vm.changeLogEntries.length > 0">
-                    <uui-button slot="header-actions" look="outline" compact ng-click="vm.openChangeLogPanel()">View all</uui-button>
+                    <uui-button slot="header-actions" look="outline" compact ng-click="vm.openChangeLogPanel()" label="View all">View all</uui-button>
                     <div ng-repeat="group in vm.changeLogEntries | limitTo: 3">
                         <uui-menu-item label="{{group.formattedDate}}" has-children>
                             <uui-badge slot="badge" color="default" look="placeholder">{{group.friendlyDatePeriod}}</uui-badge>

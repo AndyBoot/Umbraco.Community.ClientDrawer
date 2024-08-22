@@ -1,16 +1,25 @@
-﻿using System.Xml.Serialization;
+﻿using System.Runtime.Serialization;
+using System.Xml.Serialization;
 using Umbraco.Extensions;
 using static Umbraco.Community.ClientDrawer.Models.DataModel.ChangeLogXml;
 
 namespace Umbraco.Community.ClientDrawer.Models
 {
+    [DataContract]
     public class DataModel
     {
+        [DataMember(Name = "heading")]
         public string Heading { get; set; } = "";
+        [DataMember(Name = "primaryAssembly")]
         public AssemblyModel? PrimaryAssembly { get; set; }
+        [DataMember(Name = "environments")]
         public List<EnvironmentModel>? Environments { get; set; }
+        [DataMember(Name = "changeLog")]
         public List<LogEntry> ChangeLog { get; set; } = [];
+        [DataMember(Name = "systemInformation")]
         public SystemInformationModel SystemInformation { get; set; } = new();
+
+        [DataContract]
         public class EnvironmentModel
         {
             public EnvironmentModel(string Name, Uri BaseUri, Uri CurrentUri, string UmbracoPathOrUrl, bool DisableUmbracoUrl, string[]? AlternativeHostNames, string IconClass)
@@ -30,21 +39,43 @@ namespace Umbraco.Community.ClientDrawer.Models
                 this.DisableUmbracoUrl = DisableUmbracoUrl || this.IsCurrent;
             }
 
+            [DataMember(Name = "name")]
             public string Name { get; set; }
+            [DataMember(Name = "primaryUrl")]
             public string PrimaryUrl { get; set; }
+            [DataMember(Name = "umbracoUrl")]
             public string UmbracoUrl { get; set; }
+            [DataMember(Name = "disableUmbracoUrl")]
             public bool DisableUmbracoUrl { get; set; }
+            [DataMember(Name = "isCurrent")]
             public bool IsCurrent { get; set; }
+            [DataMember(Name = "iconClass")]
             public string IconClass { get; set; }
         }
 
+        [DataContract]
         public class SystemInformationModel
         {
+            [DataMember(Name = "enabled")]
             public bool Enabled { get; set; } = true;
+            [DataMember(Name = "assemblies")]
             public AssemblyModel[] Assemblies { get; set; } = [];
         }
 
-        public record AssemblyModel(string Name, string Version);
+        [DataContract]
+        public record AssemblyModel
+        {
+            public AssemblyModel(string? name, string? version)
+            {
+                Name = name;
+                Version = version;
+            }
+
+            [DataMember(Name = "name")]
+            public string? Name { get; set; }
+            [DataMember(Name = "version")]
+            public string? Version { get; set; }
+        }
 
         [XmlRoot("ChangeLog")]
         public class ChangeLogXml
@@ -52,15 +83,20 @@ namespace Umbraco.Community.ClientDrawer.Models
             [XmlElement("Entry")]
             public List<LogEntry>? Entries { get; set; }
 
+            [DataContract]
             public record LogEntry
             {
                 [XmlAttribute("Date")]
+                [DataMember(Name = "date")]
                 public DateTime Date { get; set; }
 
                 [XmlElement("Change")]
+                [DataMember(Name = "changes")]
                 public List<string>? Changes { get; set; }
 
+                [DataMember(Name = "formattedDate")]
                 public string FormattedDate { get { return Date.ToString("yyyy-MM-dd"); } }
+                [DataMember(Name = "friendlyDatePeriod")]
                 public string FriendlyDatePeriod
                 {
                     get

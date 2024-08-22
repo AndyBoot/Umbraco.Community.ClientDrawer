@@ -16,12 +16,12 @@
 		<Description>An Umbraco package for providing your clients a small toolbox of useful links and information. If your website is one of many sites based on a shared platform then this package is perfect for you.</Description>
 		<PackageTags>umbraco;umbraco-marketplace;ClientDrawer;Client;Drawer;Changelog;Change;Log;Logs;Environment;Environments;HeaderApp</PackageTags>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Version>1.0.0.0</Version>
+		<Version>1.0.1</Version>
 		<Authors>Andy Boot</Authors>
 		<Copyright>2024 © Andy Boot</Copyright>
 		<PackageProjectUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</RepositoryUrl>
-		<PackageIconUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer/blob/main/images/logo.png?raw=true</PackageIconUrl>
+		<PackageIcon>logo.png</PackageIcon>
 		<PackageReadmeFile>NUGET.md</PackageReadmeFile>
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -49,6 +49,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="13.0.0" />
 		<PackageReference Include="Umbraco.Cms.Web.Website" Version="13.0.0" />
 		<PackageReference Include="Umbraco.Cms.Web.Common" Version="13.0.0" />
 	</ItemGroup>
@@ -58,9 +59,14 @@
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
+		<None Update="logo.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
 	</ItemGroup>
 
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-	  <Exec Command="copy &quot;..\..\README.md&quot; NUGET.md" />
+		<Exec Command="copy &quot;..\..\README.md&quot; NUGET.md" />
+		<Exec Command="copy &quot;..\..\images\logo.png&quot; logo.png" />
 	</Target>
 </Project>

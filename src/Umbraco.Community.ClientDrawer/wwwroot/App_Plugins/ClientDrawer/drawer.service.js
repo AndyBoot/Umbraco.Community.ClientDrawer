@@ -6,14 +6,14 @@
             var service = {};
 
             service.getData = function () {
-                return $http.get('/umbraco/clientdrawer/data/getdata')
+                return $http.get('/umbraco/backoffice/clientdrawer/data/getdata')
                     .then(function (response) {
                         return response.data;
                     });
             };
 
             service.getHeaderActionData = function () {
-                return $http.get('/umbraco/clientdrawer/data/getheaderactiondata')
+                return $http.get('/umbraco/backoffice/clientdrawer/data/getheaderactiondata')
                     .then(function (response) {
                         return response.data;
                     });
