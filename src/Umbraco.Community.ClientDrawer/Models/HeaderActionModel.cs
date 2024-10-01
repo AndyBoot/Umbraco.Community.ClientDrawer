@@ -13,5 +13,11 @@ namespace Umbraco.Community.ClientDrawer.Models
 
         [DataMember(Name = "iconImageFilePath")]
         public string? IconImageFilePath { get; set; }
+
+        [DataMember(Name = "headerButtonMode")]
+        public string HeaderButtonMode { get; set; } = "Icon";
+
+        [DataMember(Name = "currentEnvironmentName")]
+        public string? CurrentEnvironmentName { get; set; }
     }
 }

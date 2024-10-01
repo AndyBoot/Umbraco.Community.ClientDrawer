@@ -4,7 +4,7 @@
 		<Change>Updated feature Z.</Change>
 	</Entry>
 	<Entry Date="2023-01-20">
-		<Change>Updated feature Z.</Change>
+		<Change Link="https://trello.com">Updated feature Z.</Change>
 	</Entry>
 	<Entry Date="2023-08-20">
 		<Change>Updated feature Z.</Change>

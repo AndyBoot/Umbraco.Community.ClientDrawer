@@ -1,4 +1,26 @@
 .client-drawer {
+    &__header-action {
+        button {
+            &:hover {
+                opacity: 0.9;
+            }
+        }
+
+        .umb-badge {
+            font-weight: 100;
+            padding: 4px 15px;
+
+            &.mode--IconAndEnvironmentName {
+                padding: 4px 15px 4px 4px;
+            }
+
+            img {
+                width: 26px;
+                margin-right: 6px;
+            }
+        }
+    }
+
     &__wrapper {
         display: flex;
         gap: 10px;

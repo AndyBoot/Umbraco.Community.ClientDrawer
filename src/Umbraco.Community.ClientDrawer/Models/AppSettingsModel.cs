@@ -1,17 +1,22 @@
-﻿namespace Umbraco.Community.ClientDrawer.Models
+﻿using System.ComponentModel.DataAnnotations;
+using Umbraco.Community.ClientDrawer.Enums;
+
+namespace Umbraco.Community.ClientDrawer.Models
 {
     public class AppSettingsModel
     {
-        public const string SECTION_POSITION = "ClientDrawer";
+        internal const string SECTION_POSITION = "ClientDrawer";
+        [Required]
         public required string ClientName { get; set; }
         public string IconClass { get; set; } = "icon-sunny";
         public string? IconImageFilePath { get; set; }
+        public HeaderActionMode HeaderButtonMode { get; set; } = HeaderActionMode.Icon;
         public AssemblyModel? Platform { get; set; }
         public EnvironmentModel[]? Environments { get; set; }
         public SystemInformationModel SystemInformation { get; set; } = new();
         public ChangeLogModel ChangeLog { get; set; } = new();
 
-        public record AssemblyModel(string? AssemblyName);
+        public record AssemblyModel(string? AssemblyName, AssemblyVersionEnum VersionSource = AssemblyVersionEnum.Version, string? VersionRegEx = null);
         public record EnvironmentModel
         {
             public required string Name { get; set; }

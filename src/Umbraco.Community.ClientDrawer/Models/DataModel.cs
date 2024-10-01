@@ -92,7 +92,7 @@ namespace Umbraco.Community.ClientDrawer.Models
 
                 [XmlElement("Change")]
                 [DataMember(Name = "changes")]
-                public List<string>? Changes { get; set; }
+                public List<Change>? Changes { get; set; }
 
                 [DataMember(Name = "formattedDate")]
                 public string FormattedDate { get { return Date.ToString("yyyy-MM-dd"); } }
@@ -117,6 +117,18 @@ namespace Umbraco.Community.ClientDrawer.Models
                         return $"{(int)(timespan.TotalDays / 365)} year{(timespan.TotalDays >= 730 ? "s" : "")} ago";
                     }
                 }
+            }
+
+            [DataContract]
+            public record Change
+            {
+                [XmlText]
+                [DataMember(Name = "text")]
+                public required string Text { get; set; }
+
+                [XmlAttribute("Link")]
+                [DataMember(Name = "link")]
+                public string? Link { get; set; }
             }
         }
 

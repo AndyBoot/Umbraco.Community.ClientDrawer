@@ -9,7 +9,10 @@ namespace Umbraco.Community.ClientDrawer.Composers
     {
         public void Compose(IUmbracoBuilder builder)
         {
-            builder.Services.AddOptions<AppSettingsModel>().Bind(builder.Config.GetSection(AppSettingsModel.SECTION_POSITION));
+            builder.Services.AddOptions<AppSettingsModel>()
+                .Bind(builder.Config.GetSection(AppSettingsModel.SECTION_POSITION))
+                .ValidateDataAnnotations()
+                .ValidateOnStart();
         }
     }
 }

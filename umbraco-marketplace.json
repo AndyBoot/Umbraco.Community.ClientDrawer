@@ -23,7 +23,7 @@
   "DocumentationUrl": "https://github.com/AndyBoot/Umbraco.Community.ClientDrawer",
   "IssueTrackerUrl": "https://github.com/AndyBoot/Umbraco.Community.ClientDrawer/issues",
   "PackageType": "Package",
-  "Tags": [ "ClientDrawer", "Client", "Drawer", "Changelog", "Change", "Log", "Logs", "Environment", "Environments", "HeaderApp" ],
+  "Tags": [ "ClientDrawer", "Client", "Drawer", "Changelog", "Change", "Log", "Logs", "Environment", "Environments", "HeaderApp", "Assembly", "Assemblies" ],
   "Title": "Client Drawer",
   "Screenshots": [
     {
@@ -36,11 +36,19 @@
     },
     {
       "ImageUrl": "https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/screenshot3.png",
-      "Caption": "Screenshot 3"
+      "Caption": "Screenshot 3 - Change Log"
     },
     {
       "ImageUrl": "https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/screenshot4.png",
-      "Caption": "Screenshot 4"
+      "Caption": "Screenshot 4 - Icon Button"
+    },
+    {
+      "ImageUrl": "https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/screenshot5.png",
+      "Caption": "Screenshot 5 - Icon + Environment Name Button"
+    },
+    {
+      "ImageUrl": "https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/screenshot6.png",
+      "Caption": "Screenshot 6 - Environment Name Button"
     }
   ]
 }

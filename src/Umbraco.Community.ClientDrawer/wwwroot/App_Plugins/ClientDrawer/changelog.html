@@ -14,10 +14,15 @@
                 <tr>
                     <th style="width: 20%;">Date</th>
                     <th>Changes</th>
+                    <th>Link</th>
                 </tr>
                 <tr ng-repeat="entry in vm.simplifiedChangeLogEntries">
                     <td>{{entry.date}}</td>
-                    <td>{{entry.change}}</td>
+                    <td>{{entry.change.text}}</td>
+                    <td>
+                        <a ng-if="entry.change.link" ng-href="{{entry.change.link}}" target="_blank">{{entry.change.link}}</a>
+                        <span ng-if="!entry.change.link">&nbsp;</span>
+                    </td>
                 </tr>
                 <!-- More rows as needed -->
             </table>

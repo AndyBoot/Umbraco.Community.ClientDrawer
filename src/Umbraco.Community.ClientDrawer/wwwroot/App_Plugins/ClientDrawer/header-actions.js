@@ -6,6 +6,8 @@ angular.module("umbraco").run([
     "clientDrawerService",
     function ($compile, appState, eventsService, $http, clientDrawerService) {
         var title = '';
+        var headerButtonMode = 'Icon';
+        var currentEnvironmentName = '';
         eventsService.on("app.ready", function (e, args) {
             // console.log("app.ready", e, args);
 
@@ -18,6 +20,8 @@ angular.module("umbraco").run([
                 var iconClass = data.iconClass;
                 var iconImg = data.iconImageFilePath;
                 title = data.clientName;
+                headerButtonMode = data.headerButtonMode;
+                currentEnvironmentName = data.currentEnvironmentName;
 
                 if (iconImg?.length > 0 && iconImg?.toLowerCase().indexOf(".svg") > 0) {
                     $http.get(iconImg, { cache: true })
@@ -27,20 +31,20 @@ angular.module("umbraco").run([
                             return response.data;
                         })
                         .then(function (response) {
-                            var html = getActionHTML(response, title);
+                            var html = getActionHTML(response, title, headerButtonMode, currentEnvironmentName);
 
                             var dom = $compile(html)(scope);
                             angular.element(".umb-app-header__actions > li:first-child").before(dom);
                         });
                 }
                 else if (iconImg?.length > 0) {
-                    var html = getActionHTML(`<img src="` + iconImg + `" alt="` + title + `" />`, title);
+                    var html = getActionHTML(`<img src="` + iconImg + `" alt="` + title + `" />`, title, headerButtonMode, currentEnvironmentName);
 
                     var dom = $compile(html)(scope);
                     angular.element(".umb-app-header__actions > li:first-child").before(dom);
                 }
                 else if (iconClass.length > 0) {
-                    var html = getActionHTML(`<umb-icon icon="` + iconClass + `"></umb-icon>`, title);
+                    var html = getActionHTML(`<umb-icon icon="` + iconClass + `"></umb-icon>`, title, headerButtonMode, currentEnvironmentName);
 
                     var dom = $compile(html)(scope);
                     angular.element(".umb-app-header__actions > li:first-child").before(dom);
@@ -49,14 +53,29 @@ angular.module("umbraco").run([
 
         });
 
-        function getActionHTML(icon, title) {
-            return `<li class="umb-app-header__action">
-                        <button type="button" class="umb-app-header__button btn-reset" title="` + title + `" ng-click="open()">
-                            <span class="umb-app-header__action-icon umb-icon">
+        function getActionHTML(icon, title, headerButtonMode, currentEnvironmentName) {
+            var html = `
+                <li class="umb-app-header__action client-drawer__header-action">
+                    <button type="button" class="umb-app-header__button btn-reset" title="` + title + `" ng-click="open()">
+            `;
+            switch (headerButtonMode) {
+                case 'IconAndEnvironmentName':
+                    html += `<span class="umb-badge umb-badge--success umb-badge--m mode--IconAndEnvironmentName">` + icon + currentEnvironmentName + `</span>`;
+                    break;
+                case 'EnvironmentName':
+                    html += `<span class="umb-badge umb-badge--success umb-badge--m mode--EnvironmentName">` + currentEnvironmentName + `</span>`;
+                    break;
+                default:
+                case 'Icon':
+                    html += `<span class="umb-app-header__action-icon umb-icon">
                                 <span class="umb-icon__inner">` + icon + `</span>
-                            </span>
-                        </button>
-                    </li>`;
+                            </span>`;
+                    break;
+            }
+
+            html += `</button></li>`;
+
+            return html;
         }
 
         function open() {

@@ -18,7 +18,7 @@
 - **System information** section to show the versions of any assembly.
 
 ## Screenshots
-[![Screenshot 1](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/thumb_screenshot1.png)](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/screenshot1.png) [![Screenshot 2](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/thumb_screenshot2.png)](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/screenshot2.png) [![Screenshot 3](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/thumb_screenshot3.png)](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/screenshot3.png) [![Screenshot 4](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/thumb_screenshot4.png)](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/screenshot4.png)
+[![Screenshot 1](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/thumb_screenshot1.png)](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/screenshot1.png) [![Screenshot 2](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/thumb_screenshot2.png)](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/screenshot2.png) [![Screenshot 3](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/thumb_screenshot3.png)](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/screenshot3.png) [![Screenshot 4](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/thumb_screenshot4.png)](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/screenshot4.png) [![Screenshot 5](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/thumb_screenshot5.png)](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/screenshot5.png) [![Screenshot 6](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/thumb_screenshot6.png)](https://raw.githubusercontent.com/AndyBoot/Umbraco.Community.ClientDrawer/main/images/screenshot6.png)
 
 
 ## Requirements
@@ -34,13 +34,16 @@ Simply search for the `Umbraco.Community.ClientDrawer` NuGet package and add it 
 
 ## Configuration
 ### `appsettings*.json` example
-```
+```json
 {
   "ClientDrawer": {
     "ClientName": "Sample Website, Shared Platform",
     "IconImageFilePath": "/sample.svg",
+    "HeaderButtonMode": "IconAndEnvironmentName",
     "Platform": {
-      "AssemblyName": "Sample.Platform.Shared"
+      "AssemblyName": "Sample.Platform.Shared",
+      "VersionSource": "InformationalVersion",
+      "VersionRegEx": "^[^+]+"
     },
     "Environments": [
       {
@@ -81,56 +84,59 @@ Simply search for the `Umbraco.Community.ClientDrawer` NuGet package and add it 
 }
 ```
 
-| Property Name 	| Type   	| Default Value 	| Example Value(s) 	|
-|---------------	|--------	|---------------	|---------------	|
-| ClientName       	| `string` 	| `null` (required)  	| `"Sample Website, Shared Platform"`                  |
-| IconClass        	| `string` 	| `"icon-sunny"`   	| `"icon-globe"`    |
-| IconImageFilePath	| `string` 	| `null`   	        | `"sample-logo.svg"` or `"sample-logo.png"`                  |
-| Platform        	| `Assembly` 	|    	|     |
-| Environments        	| `Environment[]` 	|    	|     |
-| ChangeLog        	| `ChangeLog` 	|    	|     |
-| SystemInformation        	| `SystemInformation` 	|    	|     |
+| Property Name 	| Type   	| Default Value 	| Example Value(s) 	| Since Version 	|
+|---------------	|--------	|---------------	|---------------	|---------------	|
+| ClientName       	| `string` 	| `null` (required)  	| `"Sample Website, Shared Platform"`                  | 1.0.0 |
+| IconClass        	| `string` 	| `"icon-sunny"`   	| `"icon-globe"`    | 1.0.0 |
+| IconImageFilePath	| `string` 	| `null`   	        | `"sample-logo.svg"` or `"sample-logo.png"`                  | 1.0.0 |
+| HeaderButtonMode	| `string` 	| `Icon`   	        | `"EnvironmentName"` or `"IconAndEnvironmentName"`                  | 1.1.0 |
+| Platform        	| `Assembly` 	|    	|     | 1.0.0 |
+| Environments        	| `Environment[]` 	|    	|     | 1.0.0 |
+| ChangeLog        	| `ChangeLog` 	|    	|     | 1.0.0 |
+| SystemInformation        	| `SystemInformation` 	|    	|     | 1.0.0 |
 
 ### `Assembly`
 
-| Property Name 	| Type   	| Default Value 	| Example Value(s) 	|
-|---------------	|--------	|---------------	|---------------	|
-| AssemblyName    	| `string` 	| `null`  	| `"Sample.Platform.Shared"` or `"Umbraco.Core"`                  |
+| Property Name 	| Type   	| Default Value 	| Example Value(s) 	| Since Version 	|
+|---------------	|--------	|---------------	|---------------	|---------------	|
+| AssemblyName    	| `string` 	| `null`  	| `"Sample.Platform.Shared"` or `"Umbraco.Core"`                  | 1.0.0 |
+| VersionSource    	| `string` 	| `Version`  	| `"FileVersion"` or `"InformationalVersion"`                  | 1.1.0 |
+| VersionRegEx    	| `string` 	| `null`  	| `^[^+]+` (This removes everything after the + symbol)                 | 1.1.0 |
 
 ### `Environment`
 
-| Property Name 	| Type   	| Default Value 	| Example Value(s) 	|
-|---------------	|--------	|---------------	|---------------	|
-| Name          	| `string` 	| `null`  	| `"Staging"` or `"Production"`                  |
-| BaseUrl          	| `string` 	| `null`  	| `"https://staging.samplewebsite.com"` or `"https://www.samplewebsite.com"`                  |
-| UmbracoPathOrUrl          	| `string` 	| `"/umbraco/"`  	| `"https://samplewebsite.azurewebsites.net/umbraco/"`  |
-| DisableUmbracoUrl          	| `bool` 	| `false`  	| |
-| AlternativeHostnames          	| `string[]` 	| `null`  	| `["test.samplewebsite.com", "nocache.samplewebsite.com"]` |
-| IconClass          	| `string` 	| `"icon-globe"`  	| `"icon-mindmap"` |
+| Property Name 	| Type   	| Default Value 	| Example Value(s) 	| Since Version 	|
+|---------------	|--------	|---------------	|---------------	|---------------	|
+| Name          	| `string` 	| `null`  	| `"Staging"` or `"Production"`                  | 1.0.0 |
+| BaseUrl          	| `string` 	| `null`  	| `"https://staging.samplewebsite.com"` or `"https://www.samplewebsite.com"`                  | 1.0.0 |
+| UmbracoPathOrUrl          	| `string` 	| `"/umbraco/"`  	| `"https://samplewebsite.azurewebsites.net/umbraco/"`  | 1.0.0 |
+| DisableUmbracoUrl          	| `bool` 	| `false`  	| | 1.0.0 |
+| AlternativeHostnames          	| `string[]` 	| `null`  	| `["test.samplewebsite.com", "nocache.samplewebsite.com"]` | 1.0.0 |
+| IconClass          	| `string` 	| `"icon-globe"`  	| `"icon-mindmap"` | 1.0.0 |
 
 ### `ChangeLog`
 
-| Property Name 	| Type   	| Default Value 	| Example Value(s) 	|
-|---------------	|--------	|---------------	|---------------	|
-| FilePath         	| `string` 	| `"changelog.xml"`  	| `"/path/to/changelog.xml"`                  |
-| AssemblyName     	| `string` 	| `null`  	| `Sample.Platform.Shared`                  |
+| Property Name 	| Type   	| Default Value 	| Example Value(s) 	| Since Version 	|
+|---------------	|--------	|---------------	|---------------	|---------------	|
+| FilePath         	| `string` 	| `"changelog.xml"`  	| `"/path/to/changelog.xml"`                  | 1.0.0 |
+| AssemblyName     	| `string` 	| `null`  	| `Sample.Platform.Shared`                  | 1.0.0 |
 
 ### `SystemInformation`
 
-| Property Name 	| Type   	| Default Value 	| Example Value(s) 	|
-|---------------	|--------	|---------------	|---------------	|
-| Enabled         	| `bool` 	| `true`  	| `false`                  |
-| Assemblies     	| `Assembly[]` 	| `[]`  	| `[{ "AssemblyName": "Umbraco.Core" }, { "AssemblyName": "Umbraco.Forms" }]`                  |
+| Property Name 	| Type   	| Default Value 	| Example Value(s) 	| Since Version 	|
+|---------------	|--------	|---------------	|---------------	|---------------	|
+| Enabled         	| `bool` 	| `true`  	| `false`                  | 1.0.0 |
+| Assemblies     	| `Assembly[]` 	| `[]`  	| `[{ "AssemblyName": "Umbraco.Core" }, { "AssemblyName": "Umbraco.Forms" }]`                  | 1.0.0 |
 
 ## Change Log XML
 Simply create an XML file within your website project or other referenced project/assembly. For ease, create it in the root and name it `changelog.xml`.
 
 ### Format
-```
+```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <ChangeLog>
 	<Entry Date="2022-01-20">
-		<Change>Updated feature A.</Change>
+		<Change Link="https://trello.com">Updated feature A.</Change>
 	</Entry>
 	<Entry Date="2023-01-20">
 		<Change>Updated feature B.</Change>
@@ -162,16 +168,19 @@ If you're embedding this file as a resource within a DLL, also use the `ClientDr
 
 ## Change Log
 
-|Version    |Description            |
-|-----------|---------------        |
-|1.0.1      |Security Fixes         |
-|1.0.0      |Initial                |
+|Version    |Change Type            |Description            |
+|-----------|---------------        |---------------        |
+|1.1.0      |Feature                |Header Modes! You now have 'Icon', 'Environment Name', or 'Icon + Environment Name' as the button in the header.           |
+|1.1.0      |Enhancement            |Assemblies now support different version sources & regular expressions for cleaning up the displayed version (see sample projects)|
+|1.1.0      |Enhancement            |Change log entries now support links to kanban or ticketing systems (i.e. Trello, Jira, etc)               |
+|1.0.1      |Security               |Fixes                  |
+|1.0.0      |n/a                       |Initial                |
 
 ## Troubleshooting
 Coming soon
 
 ## Contributions
-You're more than welcome to fork and do a pull request.
+You're more than welcome to fork and do a pull request. Just drop me a message first and discuss before you devote your time into your idea.
 
 ## Issues
 Please report them on the issues tab of this repository.
