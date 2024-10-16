@@ -26,7 +26,7 @@ public class PackageManifestFilter : IManifestFilter
         manifests.Add(new PackageManifest
         {
             PackageName = "Umbraco.Community.ClientDrawer",
-            Version = "1.0.0",
+            Version = "1.1.1",
             AllowPackageTelemetry = true,
             Scripts =
             [

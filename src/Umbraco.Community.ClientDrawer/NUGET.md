@@ -170,6 +170,7 @@ If you're embedding this file as a resource within a DLL, also use the `ClientDr
 
 |Version    |Change Type            |Description            |
 |-----------|---------------        |---------------        |
+|1.1.1      |Fix                |Fixed a bug which caused the header button to duplicate on lock screen timeout.           |
 |1.1.0      |Feature                |Header Modes! You now have 'Icon', 'Environment Name', or 'Icon + Environment Name' as the button in the header.           |
 |1.1.0      |Enhancement            |Assemblies now support different version sources & regular expressions for cleaning up the displayed version (see sample projects)|
 |1.1.0      |Enhancement            |Change log entries now support links to kanban or ticketing systems (i.e. Trello, Jira, etc)               |

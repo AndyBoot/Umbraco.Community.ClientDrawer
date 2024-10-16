@@ -9,7 +9,10 @@ angular.module("umbraco").run([
         var headerButtonMode = 'Icon';
         var currentEnvironmentName = '';
         eventsService.on("app.ready", function (e, args) {
-            // console.log("app.ready", e, args);
+
+            if (angular.element(".client-drawer__header-action").length > 0) {
+                return;
+            }
 
             var scope = e.targetScope.$new();
 
