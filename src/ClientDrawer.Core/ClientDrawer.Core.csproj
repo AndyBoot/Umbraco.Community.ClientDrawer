@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageId>Umbraco.Community.ClientDrawer.Core</PackageId>
+		<Product>Umbraco.Community.ClientDrawer.Core</Product>
+		<Title>Umbraco.Community.ClientDrawer.Core</Title>
+		<RootNamespace>ClientDrawer.Core</RootNamespace>
+		<Description>This is a general dependency of Umbraco.Community.ClientDrawer. You do not need to install this yourself.</Description>
+		<PackageTags>ClientDrawer;Client;Drawer;Changelog;Change;Log;Logs;Environment;Environments;HeaderApp</PackageTags>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Version>1.0.0</Version>
+		<Authors>Andy Boot</Authors>
+		<Copyright>2024 © Andy Boot</Copyright>
+		<PackageProjectUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</RepositoryUrl>
+		<PackageIcon>logo.png</PackageIcon>
+		<PackageReadmeFile>NUGET.md</PackageReadmeFile>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Update="NUGET.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Update="logo.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+		<Exec Command="copy &quot;..\..\README.md&quot; NUGET.md" />
+		<Exec Command="copy &quot;..\..\images\logo.png&quot; logo.png" />
+	</Target>
+	<ItemGroup>
+	  <PackageReference Include="Umbraco.Cms.Core" Version="[13.0.0,14.999]" />
+	  <PackageReference Include="Umbraco.Cms.Web.Website" Version="[13.0.0,14.999]" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,2 @@
+npm run generateapi
+pause
