@@ -1,12 +1,12 @@
-import { UmbElementMixin } from "@umbraco-cms/backoffice/element-api";
-import { LitElement, html, css, customElement, property, unsafeHTML } from "@umbraco-cms/backoffice/external/lit";
+import { html, css, customElement, property, unsafeHTML } from "@umbraco-cms/backoffice/external/lit";
 import { CLIENTDRAWER_MODAL } from "../tokens/drawer.token";
 import { UMB_MODAL_MANAGER_CONTEXT, UmbModalManagerContext } from "@umbraco-cms/backoffice/modal";
 import { ClientDrawerContext, CLIENT_DRAWER_CONTEXT_TOKEN } from "../contexts/clientdrawer.context";
 import { HeaderActionModel } from "../api";
+import { UmbHeaderAppButtonElement } from '@umbraco-cms/backoffice/components';
 
-@customElement('clientdrawer-headerapp')
-export class ClientDrawerHeaderApp extends UmbElementMixin(LitElement) {
+@customElement('clientdrawer-header-app')
+export class ClientDrawerHeaderApp extends UmbHeaderAppButtonElement {
 
     #clientDrawerContext?: ClientDrawerContext;
 

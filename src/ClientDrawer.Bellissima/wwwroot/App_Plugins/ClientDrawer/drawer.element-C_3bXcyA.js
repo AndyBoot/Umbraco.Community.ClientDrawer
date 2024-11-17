@@ -285,7 +285,7 @@ let s = class extends R {
   constructor() {
     super(), U(this, $), U(this, p, void 0), this.content = "", this.consumeContext(X, (t) => {
       se(this, p, t), this.observe(t.drawer, (e) => {
-        this.drawer = e, console.log(this.drawer);
+        this.drawer = e;
       });
     });
   }
@@ -361,4 +361,4 @@ export {
   s as ClientDrawerModalElement,
   ve as default
 };
-//# sourceMappingURL=drawer.element-CKEFDyeV.js.map
+//# sourceMappingURL=drawer.element-C_3bXcyA.js.map

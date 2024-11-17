@@ -3,8 +3,8 @@ const a = [
     type: "headerApp",
     name: "ClientDrawer",
     alias: "ClientDrawer.headerApp",
-    elementName: "clientdrawer-headerapp",
-    js: () => import("./headerapp.element-OkSt63s-.js"),
+    elementName: "clientdrawer-header-app",
+    js: () => import("./headerapp.element-DpSlpgTC.js"),
     weight: 9999,
     meta: {
       label: "ClientDrawer",
@@ -16,7 +16,7 @@ const a = [
     type: "modal",
     alias: "clientdrawer.modal",
     name: "Client Drawer Modal",
-    js: () => import("./drawer.element-CKEFDyeV.js")
+    js: () => import("./drawer.element-C_3bXcyA.js")
   },
   {
     type: "modal",

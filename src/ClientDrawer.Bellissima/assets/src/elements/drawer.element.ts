@@ -25,7 +25,6 @@ export class ClientDrawerModalElement extends UmbModalBaseElement<ClientDrawerMo
 
             this.observe(_instance.drawer, (_drawer) => {
                 this.drawer = _drawer;
-                console.log(this.drawer);
             });
         });
     }

@@ -170,6 +170,7 @@ If you're embedding this file as a resource within a DLL, also use the `ClientDr
 
 |Version    |Change Type    |Description     |
 |-----------|---------------|--------------- |
+|14.0.1     |Fix            |Optimised initial load of header app|
 |14.0.0     |New release    |Rebuilt from scratch for v14 (Bellissima) compatibility. All features migrated from v1.1.1/13.0.0|
 |13.0.0     |Versioning     |Version increment only (following the release of the v14 package). Same features as 1.1.1.|
 |1.1.1      |Fix            |Fixed a bug which caused the header button to duplicate on lock screen timeout.|

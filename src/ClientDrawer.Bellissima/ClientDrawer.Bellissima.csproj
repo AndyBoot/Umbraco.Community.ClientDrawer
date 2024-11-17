@@ -5,6 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<StaticWebAssetBasePath>/</StaticWebAssetBasePath>
+		<Configurations>Debug;Release</Configurations>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -14,8 +15,8 @@
 		<RootNamespace>Umbraco.Community.ClientDrawer</RootNamespace>
 		<Description>An Umbraco package for providing your clients a small toolbox of useful links and information. If your website is one of many sites based on a shared platform then this package is perfect for you.</Description>
 		<PackageTags>umbraco;umbraco-marketplace;ClientDrawer;Client;Drawer;Changelog;Change;Log;Logs;Environment;Environments;HeaderApp</PackageTags>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Version>14.0.0</Version>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<Version>$(Version)</Version>
 		<Authors>Andy Boot</Authors>
 		<Copyright>2024 © Andy Boot</Copyright>
 		<PackageProjectUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</PackageProjectUrl>
@@ -35,11 +36,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="NUGET.md">
+		<None Include="NUGET.md">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
-		<None Update="logo.png">
+		<None Include="logo.png">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
@@ -47,6 +48,12 @@
 
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
 		<Exec Command="copy &quot;..\..\README.md&quot; NUGET.md" />
-		<Exec Command="copy &quot;..\..\images\logo.png&quot; logo.png" />
+		<!--<Exec Command="copy &quot;..\..\images\logo.png&quot; logo.png" />-->
+	</Target>
+	
+	<Target Name="NPM" BeforeTargets="PreBuildEvent" Condition="$(Configuration.Equals('Release'))">
+		<!-- Run npm install and build commands -->
+		<Exec Command="npm install" WorkingDirectory="assets" />
+		<Exec Command="npm run build" WorkingDirectory="assets" />
 	</Target>
 </Project>

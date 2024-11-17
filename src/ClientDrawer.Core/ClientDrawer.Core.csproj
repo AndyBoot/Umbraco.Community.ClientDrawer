@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
@@ -13,8 +13,9 @@
 		<RootNamespace>ClientDrawer.Core</RootNamespace>
 		<Description>This is a general dependency of Umbraco.Community.ClientDrawer. You do not need to install this yourself.</Description>
 		<PackageTags>ClientDrawer;Client;Drawer;Changelog;Change;Log;Logs;Environment;Environments;HeaderApp</PackageTags>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Version>1.0.0</Version>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<Version>$(CoreVersion)</Version>
+		<PackageVersion>$(CoreVersion)</PackageVersion>
 		<Authors>Andy Boot</Authors>
 		<Copyright>2024 © Andy Boot</Copyright>
 		<PackageProjectUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</PackageProjectUrl>
@@ -26,11 +27,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Update="NUGET.md">
+		<None Include="NUGET.md">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
-		<None Update="logo.png">
+		<None Include="logo.png">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
@@ -38,11 +39,11 @@
 
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
 		<Exec Command="copy &quot;..\..\README.md&quot; NUGET.md" />
-		<Exec Command="copy &quot;..\..\images\logo.png&quot; logo.png" />
+		<!--<Exec Command="copy &quot;..\..\images\logo.png&quot; logo.png" />-->
 	</Target>
 	<ItemGroup>
-	  <PackageReference Include="Umbraco.Cms.Core" Version="[13.0.0,14.999]" />
-	  <PackageReference Include="Umbraco.Cms.Web.Website" Version="[13.0.0,14.999]" />
+	  <PackageReference Include="Umbraco.Cms.Core" Version="[13.0.0,15.999]" />
+	  <PackageReference Include="Umbraco.Cms.Web.Website" Version="[13.0.0,15.999]" />
 	</ItemGroup>
 
 </Project>

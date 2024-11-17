@@ -4,16 +4,22 @@ $outputDir = (Get-Location).Path
 # Change the current directory to the output directory
 Set-Location -Path $outputDir
 
-# List of projects to pack
-$projects = @(
-    "ClientDrawer.Belle",
-    "ClientDrawer.Bellissima",
-    "ClientDrawer.Core"
-)
+# List of projects and their respective versions
+$projectVersions = @{
+    "ClientDrawer.Belle" = "13.0.0"
+    "ClientDrawer.Bellissima" = "14.0.1"
+    "ClientDrawer.Core" = "1.1.0"
+}
 
-# Loop through each project to build and pack
-foreach ($project in $projects) {
-    Write-Host "Building project $project in Release mode"
+# Extract the version of ClientDrawer.Core
+$CoreVersion = $projectVersions["ClientDrawer.Core"]
+Write-Host "CoreVersion is set to $CoreVersion"
+
+# Loop through each project
+foreach ($project in $projectVersions.Keys) {
+    $version = $projectVersions[$project]
+    
+    Write-Host "Building project $project with version $version"
     $projectPath = Join-Path -Path $outputDir -ChildPath "$project\$project.csproj"
     
     try {
@@ -25,9 +31,9 @@ foreach ($project in $projects) {
             exit $LASTEXITCODE
         }
         
-        Write-Host "Packing project $project"
-        # Pack the project
-        $packResult = dotnet pack $projectPath -c Release --output $outputDir 2>&1
+        Write-Host "Packing project $project with version $version using configuration $configuration"
+        # Pack the project with the specified version and configuration
+        $packResult = dotnet pack $projectPath -c Release --output $outputDir /p:Version=$version /p:CoreVersion=$CoreVersion 2>&1
         if ($LASTEXITCODE -ne 0) {
             Write-Error "Failed to pack project $project"
             Write-Host "Pack error details: $packResult"

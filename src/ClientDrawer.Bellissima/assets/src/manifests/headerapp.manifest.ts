@@ -5,7 +5,7 @@ const headerApps: Array<ManifestHeaderApp> = [
         type: 'headerApp',
         name: 'ClientDrawer',
         alias: 'ClientDrawer.headerApp',
-        elementName: 'clientdrawer-headerapp',
+        elementName: 'clientdrawer-header-app',
         js: () => import('../elements/headerapp.element'),
         weight: 9999,
         meta: {
