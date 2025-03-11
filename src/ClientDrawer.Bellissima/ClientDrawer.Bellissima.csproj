@@ -16,7 +16,7 @@
 		<Description>An Umbraco package for providing your clients a small toolbox of useful links and information. If your website is one of many sites based on a shared platform then this package is perfect for you.</Description>
 		<PackageTags>umbraco;umbraco-marketplace;ClientDrawer;Client;Drawer;Changelog;Change;Log;Logs;Environment;Environments;HeaderApp</PackageTags>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-		<Version>$(Version)</Version>
+		<Version>15.0.0.1</Version>
 		<Authors>Andy Boot</Authors>
 		<Copyright>2024 © Andy Boot</Copyright>
 		<PackageProjectUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</PackageProjectUrl>
@@ -28,13 +28,17 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Content Remove="assets\*.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Umbraco.Cms.Api.Management" Version="[15.0.0,15.999]" />
 		<PackageReference Include="Umbraco.Cms.Core" Version="[15.0.0,15.999]" />
 		<PackageReference Include="Umbraco.Cms.Web.Website" Version="[15.0.0,15.999]" />
 		<PackageReference Include="Umbraco.Cms.Web.Common" Version="[15.0.0,15.999]" />
 		<ProjectReference Include="..\ClientDrawer.Core\ClientDrawer.Core.csproj" />
 	</ItemGroup>
-
+	
 	<ItemGroup>
 		<None Include="NUGET.md">
 			<Pack>True</Pack>
