@@ -1,6 +1,6 @@
 import { html as f, unsafeHTML as v, css as _, property as D, customElement as x } from "@umbraco-cms/backoffice/external/lit";
 import { UmbModalToken as E, UMB_MODAL_MANAGER_CONTEXT as H } from "@umbraco-cms/backoffice/modal";
-import { CLIENT_DRAWER_CONTEXT_TOKEN as N } from "./clientdrawer.context-DKrZAK61.js";
+import { CLIENT_DRAWER_CONTEXT_TOKEN as N } from "./clientdrawer.context-CA343ZoY.js";
 import { UmbHeaderAppButtonElement as y } from "@umbraco-cms/backoffice/components";
 const M = new E(
   "clientdrawer.modal",
@@ -133,4 +133,4 @@ export {
   s as ClientDrawerHeaderApp,
   B as default
 };
-//# sourceMappingURL=headerapp.element-B6rnD-JF.js.map
+//# sourceMappingURL=headerapp.element-CiGVdpix.js.map

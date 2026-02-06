@@ -606,7 +606,7 @@ const oe = () => ({
     name: "ClientDrawer",
     alias: "ClientDrawer.headerApp",
     elementName: "clientdrawer-header-app",
-    js: () => import("./headerapp.element-B6rnD-JF.js"),
+    js: () => import("./headerapp.element-CiGVdpix.js"),
     weight: 9999,
     meta: {
       label: "ClientDrawer",
@@ -618,20 +618,20 @@ const oe = () => ({
     type: "modal",
     alias: "clientdrawer.modal",
     name: "Client Drawer Modal",
-    js: () => import("./drawer.element-CFPtVlAx.js")
+    js: () => import("./drawer.element-BRog0EJZ.js")
   },
   {
     type: "modal",
     alias: "clientdrawerchangelog.modal",
     name: "Client Drawer Change Log Modal",
-    js: () => import("./changelog.element-u927YJbZ.js")
+    js: () => import("./changelog.element-CkEjC9AH.js")
   }
 ], ye = [...pe], be = [
   {
     type: "globalContext",
     alias: "clientdrawer.context",
     name: "ClientDrawer context",
-    js: () => import("./clientdrawer.context-DKrZAK61.js")
+    js: () => import("./clientdrawer.context-CA343ZoY.js")
   }
 ], me = [...be], we = [
   ...he,
@@ -651,4 +651,4 @@ export {
   fe as c,
   je as o
 };
-//# sourceMappingURL=index-B7egLMLd.js.map
+//# sourceMappingURL=index-BuI3tihL.js.map

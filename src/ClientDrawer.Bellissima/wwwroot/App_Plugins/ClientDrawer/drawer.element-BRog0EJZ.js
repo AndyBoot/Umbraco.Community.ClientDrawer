@@ -2,7 +2,7 @@ import { LitElement as y, html as n, css as h, property as d, customElement as v
 import { UmbModalToken as G, UMB_MODAL_MANAGER_CONTEXT as H, UmbModalBaseElement as R } from "@umbraco-cms/backoffice/modal";
 import { UmbElementMixin as _ } from "@umbraco-cms/backoffice/element-api";
 import { UmbTextStyles as F } from "@umbraco-cms/backoffice/style";
-import { CLIENT_DRAWER_CONTEXT_TOKEN as X } from "./clientdrawer.context-DKrZAK61.js";
+import { CLIENT_DRAWER_CONTEXT_TOKEN as X } from "./clientdrawer.context-CA343ZoY.js";
 var Z = Object.defineProperty, J = Object.getOwnPropertyDescriptor, V = (t, e, r, o) => {
   for (var i = o > 1 ? void 0 : o ? J(e, r) : e, a = t.length - 1, l; a >= 0; a--)
     (l = t[a]) && (i = (o ? l(e, r, i) : l(i)) || i);
@@ -361,4 +361,4 @@ export {
   s as ClientDrawerModalElement,
   ve as default
 };
-//# sourceMappingURL=drawer.element-CFPtVlAx.js.map
+//# sourceMappingURL=drawer.element-BRog0EJZ.js.map

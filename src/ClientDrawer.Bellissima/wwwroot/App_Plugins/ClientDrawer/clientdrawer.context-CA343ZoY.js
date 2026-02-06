@@ -10,8 +10,8 @@ var r = (a, t, e) => (u(a, t, "read from private field"), e ? e.call(a) : t.get(
 import { UmbControllerBase as D } from "@umbraco-cms/backoffice/class-api";
 import { UmbContextToken as y } from "@umbraco-cms/backoffice/context-api";
 import { UmbObjectState as m } from "@umbraco-cms/backoffice/observable-api";
-import { tryExecuteAndNotify as w } from "@umbraco-cms/backoffice/resources";
-import { c as g } from "./index-B7egLMLd.js";
+import { tryExecute as w } from "@umbraco-cms/backoffice/resources";
+import { c as g } from "./index-BuI3tihL.js";
 class b {
   static getUmbracoClientdrawerApiV1Getdata(t) {
     return ((t == null ? void 0 : t.client) ?? g).get({
@@ -39,7 +39,7 @@ class b {
   }
 }
 var c;
-class A {
+class C {
   constructor(t) {
     i(this, c, void 0);
     s(this, c, t);
@@ -53,11 +53,11 @@ class A {
 }
 c = new WeakMap();
 var n;
-class C extends D {
+class A extends D {
   constructor(e) {
     super(e);
     i(this, n, void 0);
-    s(this, n, new A(this));
+    s(this, n, new C(this));
   }
   async getData() {
     return r(this, n).getData();
@@ -74,7 +74,7 @@ class p extends D {
     i(this, d, void 0);
     i(this, o, void 0);
     i(this, h, void 0);
-    s(this, o, new m(void 0)), this.drawer = r(this, o).asObservable(), s(this, h, new m(void 0)), this.headerAction = r(this, h).asObservable(), this.provideContext(f, this), s(this, d, new C(this));
+    s(this, o, new m(void 0)), this.drawer = r(this, o).asObservable(), s(this, h, new m(void 0)), this.headerAction = r(this, h).asObservable(), this.provideContext(f, this), s(this, d, new A(this));
   }
   async getData() {
     const { data: e } = await r(this, d).getData();
@@ -92,4 +92,4 @@ export {
   p as ClientDrawerContext,
   p as default
 };
-//# sourceMappingURL=clientdrawer.context-DKrZAK61.js.map
+//# sourceMappingURL=clientdrawer.context-CA343ZoY.js.map

@@ -1,6 +1,6 @@
 import { html as u, when as m, css as v, property as C, customElement as _ } from "@umbraco-cms/backoffice/external/lit";
 import { UmbModalBaseElement as w } from "@umbraco-cms/backoffice/modal";
-import { CLIENT_DRAWER_CONTEXT_TOKEN as g } from "./clientdrawer.context-DKrZAK61.js";
+import { CLIENT_DRAWER_CONTEXT_TOKEN as g } from "./clientdrawer.context-CA343ZoY.js";
 var E = Object.defineProperty, y = Object.getOwnPropertyDescriptor, p = (e, t, a, l) => {
   for (var i = l > 1 ? void 0 : l ? y(t, a) : t, o = e.length - 1, c; o >= 0; o--)
     (c = e[o]) && (i = (l ? c(t, a, i) : c(i)) || i);
@@ -92,4 +92,4 @@ export {
   n as ClientDrawerChangeLogModalElement,
   L as default
 };
-//# sourceMappingURL=changelog.element-u927YJbZ.js.map
+//# sourceMappingURL=changelog.element-CkEjC9AH.js.map
