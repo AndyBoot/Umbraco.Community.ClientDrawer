@@ -170,7 +170,7 @@ If you're embedding this file as a resource within a DLL, also use the `ClientDr
 
 |Version    |Change Type    |Description     |
 |-----------|---------------|--------------- |
-|17.0.0     |Fix            |Umbraco v17 compatibility|
+|17.0.0     |New release    |Umbraco v17 compatibility|
 |15.0.0.1   |Fix            |Resolved an issue with the Client Drawer Core dependency on first install. Also, Removal of some unnecessary files, thanks [Jeavon](https://github.com/Jeavon)!|
 |15.0.0     |New release    |Compatibility with Umbraco v15|
 |14.0.1     |Fix            |Optimised initial load of header app|
