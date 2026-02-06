@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+		<TargetFrameworks>net8.0;net10.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
@@ -14,8 +14,8 @@
 		<Description>This is a general dependency of Umbraco.Community.ClientDrawer. You do not need to install this yourself.</Description>
 		<PackageTags>ClientDrawer;Client;Drawer;Changelog;Change;Log;Logs;Environment;Environments;HeaderApp</PackageTags>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-		<Version>1.2.0</Version>
-		<PackageVersion>1.2.0</PackageVersion>
+		<Version>$(CoreVersion)</Version>
+		<PackageVersion>$(CoreVersion)</PackageVersion>
 		<Authors>Andy Boot</Authors>
 		<Copyright>2024 © Andy Boot</Copyright>
 		<PackageProjectUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</PackageProjectUrl>
