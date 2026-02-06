@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace ClientDrawer.Bellissima.Swagger
@@ -16,8 +16,6 @@ namespace ClientDrawer.Bellissima.Swagger
                     Title = "Client Drawer Api",
                     Version = "1.0",
                 });
-
-            options.OperationFilter<BackOfficeSecurityRequirementsOperationFilter>();
         }
     }
 }

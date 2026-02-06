@@ -21,6 +21,7 @@ export class ClientDrawerModalElement extends UmbModalBaseElement<ClientDrawerMo
         super();
          
         this.consumeContext(CLIENT_DRAWER_CONTEXT_TOKEN, (_instance) => {
+            if (!_instance) return;
             this.#clientDrawerContext = _instance;
 
             this.observe(_instance.drawer, (_drawer) => {
