@@ -7,8 +7,8 @@ builder.CreateUmbracoBuilder()
     .AddComposers()
     .Build();
 
-// Ensure the clientdrawer API is registered
-builder.Services.AddControllers();
+// // Ensure the clientdrawer API is registered
+// builder.Services.AddControllers();
 
 WebApplication app = builder.Build();
 
