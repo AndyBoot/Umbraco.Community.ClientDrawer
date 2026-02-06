@@ -22,7 +22,7 @@
 
 
 ## Requirements
-Umbraco 13 & 14. Can be installed on any on-premises or Umbraco Cloud installation.
+Umbraco 13 & 17. Can be installed on any on-premises or Umbraco Cloud installation.
 
 ## Installation
 
