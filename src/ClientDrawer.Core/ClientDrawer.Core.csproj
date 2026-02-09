@@ -16,8 +16,8 @@
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<Version>$(CoreVersion)</Version>
 		<PackageVersion>$(CoreVersion)</PackageVersion>
-		<Authors>Andy Boot</Authors>
-		<Copyright>2024 © Andy Boot</Copyright>
+		<Authors>Andy Boot, Jeavon</Authors>
+		<Copyright>2026 © Andy Boot</Copyright>
 		<PackageProjectUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</RepositoryUrl>
 		<PackageIcon>logo.png</PackageIcon>

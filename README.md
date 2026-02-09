@@ -189,6 +189,10 @@ Coming soon
 ## Contributions
 You're more than welcome to fork and do a pull request. Just drop me a message first and discuss before you devote your time into your idea.
 
+### Contributors
+- [@Jeavon](https://github.com/Jeavon)
+    - Upgrading the codebase from Umbraco v15 to v17 (and everything in between). h5yr!
+
 ## Issues
 Please report them on the issues tab of this repository.
 
