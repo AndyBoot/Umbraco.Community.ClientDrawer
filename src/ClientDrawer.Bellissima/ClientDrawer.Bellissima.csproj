@@ -16,9 +16,10 @@
 		<Description>An Umbraco package for providing your clients a small toolbox of useful links and information. If your website is one of many sites based on a shared platform then this package is perfect for you.</Description>
 		<PackageTags>umbraco;umbraco-marketplace;ClientDrawer;Client;Drawer;Changelog;Change;Log;Logs;Environment;Environments;HeaderApp</PackageTags>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-		<Version>17.0.0</Version>
-		<Authors>Andy Boot</Authors>
-		<Copyright>2024 © Andy Boot</Copyright>
+		<Version>17.0.1</Version>
+		<PackageVersion>17.0.1</PackageVersion>
+		<Authors>Andy Boot, Jeavon</Authors>
+		<Copyright>2026 © Andy Boot</Copyright>
 		<PackageProjectUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</RepositoryUrl>
 		<PackageIcon>logo.png</PackageIcon>
