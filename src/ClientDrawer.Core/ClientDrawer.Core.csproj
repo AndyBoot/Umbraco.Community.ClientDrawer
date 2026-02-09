@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+		<TargetFramework>net10.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
@@ -14,8 +14,8 @@
 		<Description>This is a general dependency of Umbraco.Community.ClientDrawer. You do not need to install this yourself.</Description>
 		<PackageTags>ClientDrawer;Client;Drawer;Changelog;Change;Log;Logs;Environment;Environments;HeaderApp</PackageTags>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-		<Version>$(CoreVersion)</Version>
-		<PackageVersion>$(CoreVersion)</PackageVersion>
+		<Version>17.0.1</Version>
+		<PackageVersion>17.0.1</PackageVersion>
 		<Authors>Andy Boot, Jeavon</Authors>
 		<Copyright>2026 © Andy Boot</Copyright>
 		<PackageProjectUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</PackageProjectUrl>
@@ -42,8 +42,8 @@
 		<!--<Exec Command="copy &quot;..\..\images\logo.png&quot; logo.png" />-->
 	</Target>
 	<ItemGroup>
-	  <PackageReference Include="Umbraco.Cms.Core" Version="[13.0.0,17.999]" />
-	  <PackageReference Include="Umbraco.Cms.Web.Website" Version="[13.0.0,17.999]" />
+	  <PackageReference Include="Umbraco.Cms.Core" Version="[17.0.0,17.999]" />
+	  <PackageReference Include="Umbraco.Cms.Web.Website" Version="[17.0.0,17.999]" />
 	</ItemGroup>
 
 </Project>
