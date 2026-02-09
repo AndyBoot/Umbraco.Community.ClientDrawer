@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+		<TargetFrameworks>net8.0;net10.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
@@ -16,8 +16,8 @@
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<Version>$(CoreVersion)</Version>
 		<PackageVersion>$(CoreVersion)</PackageVersion>
-		<Authors>Andy Boot</Authors>
-		<Copyright>2024 © Andy Boot</Copyright>
+		<Authors>Andy Boot, Jeavon</Authors>
+		<Copyright>2026 © Andy Boot</Copyright>
 		<PackageProjectUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</RepositoryUrl>
 		<PackageIcon>logo.png</PackageIcon>
@@ -42,8 +42,8 @@
 		<!--<Exec Command="copy &quot;..\..\images\logo.png&quot; logo.png" />-->
 	</Target>
 	<ItemGroup>
-	  <PackageReference Include="Umbraco.Cms.Core" Version="[13.0.0,15.999]" />
-	  <PackageReference Include="Umbraco.Cms.Web.Website" Version="[13.0.0,15.999]" />
+	  <PackageReference Include="Umbraco.Cms.Core" Version="[13.0.0,17.999]" />
+	  <PackageReference Include="Umbraco.Cms.Web.Website" Version="[13.0.0,17.999]" />
 	</ItemGroup>
 
 </Project>

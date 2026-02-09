@@ -22,7 +22,7 @@
 
 
 ## Requirements
-Umbraco 13 & 14. Can be installed on any on-premises or Umbraco Cloud installation.
+Umbraco 13 & 17. Can be installed on any on-premises or Umbraco Cloud installation.
 
 ## Installation
 
@@ -170,6 +170,8 @@ If you're embedding this file as a resource within a DLL, also use the `ClientDr
 
 |Version    |Change Type    |Description     |
 |-----------|---------------|--------------- |
+|17.0.0     |New release    |Umbraco v17 compatibility|
+|15.0.0.1   |Fix            |Resolved an issue with the Client Drawer Core dependency on first install. Also, Removal of some unnecessary files, thanks [Jeavon](https://github.com/Jeavon)!|
 |15.0.0     |New release    |Compatibility with Umbraco v15|
 |14.0.1     |Fix            |Optimised initial load of header app|
 |14.0.0     |New release    |Rebuilt from scratch for v14 (Bellissima) compatibility. All features migrated from v1.1.1/13.0.0|
@@ -186,6 +188,10 @@ Coming soon
 
 ## Contributions
 You're more than welcome to fork and do a pull request. Just drop me a message first and discuss before you devote your time into your idea.
+
+### Contributors
+- [@Jeavon](https://github.com/Jeavon)
+    - Upgrading the codebase from Umbraco v15 to v17 (and everything in between). h5yr!
 
 ## Issues
 Please report them on the issues tab of this repository.

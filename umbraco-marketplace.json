@@ -13,6 +13,10 @@
       {
         "Name": "Andy Boot",
         "Url": "https://github.com/AndyBoot"
+      },
+      {
+        "Name": "Jeavon",
+        "Url": "https://github.com/Jeavon"
       }
     ],
     "SyncContributorsFromRepository": true
@@ -23,7 +27,7 @@
   "DocumentationUrl": "https://github.com/AndyBoot/Umbraco.Community.ClientDrawer",
   "IssueTrackerUrl": "https://github.com/AndyBoot/Umbraco.Community.ClientDrawer/issues",
   "PackageType": "Package",
-  "Tags": [ "ClientDrawer", "Client", "Drawer", "Changelog", "Change", "Log", "Logs", "Environment", "Environments", "HeaderApp", "Assembly", "Assemblies" ],
+  "Tags": [ "ClientDrawer", "Client", "Drawer", "Changelog", "Change", "Log", "Logs", "Environment", "Environments", "HeaderApp", "Assembly", "Assemblies", "Sidebar" ],
   "Title": "Client Drawer",
   "Screenshots": [
     {

@@ -26,11 +26,15 @@ export class ClientDrawerHeaderApp extends UmbHeaderAppButtonElement {
         super()
 
         this.consumeContext(CLIENT_DRAWER_CONTEXT_TOKEN, (_instance) => {
+            if (!_instance) return;
             this.#clientDrawerContext = _instance;
 
             this.observe(_instance.headerAction, (_headerAction) => {
                 this.headerAction = _headerAction;
             });
+
+            // Fetch header action data when context becomes available
+            this.#clientDrawerContext.getHeaderActionData();
         });
 
         this.consumeContext(UMB_MODAL_MANAGER_CONTEXT, (_instance: UmbModalManagerContext | undefined) => {
@@ -40,10 +44,6 @@ export class ClientDrawerHeaderApp extends UmbHeaderAppButtonElement {
 
     connectedCallback(): void {
         super.connectedCallback();
-
-        if (this.#clientDrawerContext != null) {
-            this.#clientDrawerContext.getHeaderActionData();
-        }
     }
 
     #buttonClick() {
@@ -73,11 +73,11 @@ export class ClientDrawerHeaderApp extends UmbHeaderAppButtonElement {
         let iconHtml = ``;
 
         if (this.iconSvg.length > 0) {
-            iconHtml = `<uui-icon>${this.iconSvg}</umb-icon>`;
+            iconHtml = `<uui-icon>${this.iconSvg}</uui-icon>`;
         } else if (this.iconImg?.length > 0) {
             iconHtml = `<img src="${this.iconImg}" alt="${this.clientName}" />`;
         } else if (this.iconClass.length > 0) {
-            iconHtml = `<uui-icon icon="${this.iconClass}"></umb-icon>`;
+            iconHtml = `<uui-icon icon="${this.iconClass}"></uui-icon>`;
         }
 
         //console.log({ 'this.headerAction': this.headerAction, 'iconImg': this.iconImg, 'iconHtml': iconHtml });
@@ -100,7 +100,7 @@ export class ClientDrawerHeaderApp extends UmbHeaderAppButtonElement {
         }
     }
 
-    static styles = css`
+    static styles = [css`
         :host {
             line-height: normal;
         }
@@ -114,6 +114,7 @@ export class ClientDrawerHeaderApp extends UmbHeaderAppButtonElement {
             height: 33px;
             display: inline-flex;
             align-items: center;
+            min-width: fit-content;
         }
         button#ClientDrawerHeaderApp:hover {
             opacity: 0.9;
@@ -140,6 +141,8 @@ export class ClientDrawerHeaderApp extends UmbHeaderAppButtonElement {
             justify-content: center;
             display: inline-flex;
             border-radius: 100px;
+            white-space: nowrap;
+            min-width: fit-content;
         }
         #ClientDrawerHeaderApp .umb-badge.mode--IconAndEnvironmentName {
             padding: 4px 15px 4px 4px;
@@ -148,7 +151,7 @@ export class ClientDrawerHeaderApp extends UmbHeaderAppButtonElement {
             width: 26px;
             margin-right: 6px;
         }
-    `
+    `]
 }
 
 
