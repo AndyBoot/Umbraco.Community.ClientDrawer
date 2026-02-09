@@ -2,13 +2,13 @@
   "$schema": "../umbraco-package-schema.json",
   "name": "Umbraco.Community.ClientDrawer",
   "id": "Umbraco.Community.ClientDrawer",
-  "version": "14.0.0",
+  "version": "17.0.0",
   "allowTelemetry": true,
   "extensions": [
     {
       "name": "ClientDrawer.entrypoint",
       "alias": "ClientDrawer.EntryPoint",
-      "type": "entryPoint",
+      "type": "backofficeEntryPoint",
       "js": "/app_plugins/ClientDrawer/assets.js"
     }
   ]
