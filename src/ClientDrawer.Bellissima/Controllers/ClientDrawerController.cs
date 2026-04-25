@@ -19,7 +19,7 @@ namespace ClientDrawer.Bellissima.Controllers
     [Authorize(Policy = AuthorizationPolicies.BackOfficeAccess)]
     [JsonOptionsName(Constants.JsonOptionsNames.BackOffice)]
     [BackOfficeRoute("clientdrawer/api/v{version:apiVersion}")]
-    public class ClientDrawerController
+    public class ClientDrawerController : ControllerBase
     {
         private readonly IClientDrawerService _clientDrawerService;
         private readonly AppCaches _appCaches;
@@ -34,12 +34,30 @@ namespace ClientDrawer.Bellissima.Controllers
 
         [HttpGet("getdata")]
         [ProducesResponseType(typeof(DataModel), 200)]
-        public DataModel? GetData() => GetSetCacheItem(_clientDrawerService.GetDataWorker, "ClientDrawerGetData", CACHE_MINS);
+        [ProducesResponseType(204)]
+        public IActionResult GetData()
+        {
+            var data = GetSetCacheItem(_clientDrawerService.GetDataWorker, "ClientDrawerGetData", CACHE_MINS);
+            if (data == null)
+            {
+                return NoContent();
+            }
+            return new OkObjectResult(data);
+        }
 
 
         [HttpGet("getheaderactiondata")]
         [ProducesResponseType(typeof(HeaderActionModel), 200)]
-        public HeaderActionModel? GetHeaderActionData() => GetSetCacheItem(_clientDrawerService.GetHeaderActionDataWorker, "ClientDrawerGetHeaderActionDataWorker", CACHE_MINS);
+        [ProducesResponseType(204)]
+        public IActionResult GetHeaderActionData()
+        {
+            var data = GetSetCacheItem(_clientDrawerService.GetHeaderActionModel, "ClientDrawerGetHeaderActionDataWorker", CACHE_MINS);
+            if (data == null)
+            {
+                return NoContent();
+            }
+            return new OkObjectResult(data);
+        }
 
         private T? GetSetCacheItem<T>(Func<T> methodName, string cacheName, double expiryMins)
         {
