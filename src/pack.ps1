@@ -6,8 +6,8 @@ Set-Location -Path $outputDir
 
 # List of projects and their respective versions
 $projectVersions = @{
-    "ClientDrawer.Bellissima" = "17.0.1"
-    "ClientDrawer.Core" = "17.0.1"
+    "ClientDrawer.Bellissima" = "17.1.0"
+    "ClientDrawer.Core" = "17.1.0"
 }
 
 # Extract the version of ClientDrawer.Core

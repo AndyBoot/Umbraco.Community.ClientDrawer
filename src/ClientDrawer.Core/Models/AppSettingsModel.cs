@@ -26,6 +26,7 @@ namespace ClientDrawer.Core.Models
             public bool DisableUmbracoUrl { get; set; } = false;
             public string[]? AlternativeHostnames { get; set; }
             public string IconClass { get; set; } = "icon-globe";
+            public string[]? UserGroups { get; set; }
         }
         public record SystemInformationModel
         {

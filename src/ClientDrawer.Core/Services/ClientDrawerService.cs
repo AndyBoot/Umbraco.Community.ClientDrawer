@@ -11,13 +11,14 @@ using ClientDrawer.Core.Enums;
 using Umbraco.Extensions;
 using Umbraco.Cms.Core.Cache;
 using Microsoft.AspNetCore.Mvc;
+using Umbraco.Cms.Core.Security;
 
 namespace ClientDrawer.Core.Services
 {
     public interface IClientDrawerService
     {
-        DataModel GetDataWorker();
-        HeaderActionModel GetHeaderActionDataWorker();
+        DataModel? GetDataWorker();
+        HeaderActionModel? GetHeaderActionModel();
     }
 
     public class ClientDrawerService : IClientDrawerService
@@ -25,28 +26,64 @@ namespace ClientDrawer.Core.Services
         private readonly AppSettingsModel _options;
         private readonly IWebHostEnvironment _env;
         private Uri _currentUri;
-        private List<EnvironmentModel> _environmentModels;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IBackOfficeSecurityAccessor _backOfficeSecurityAccessor;
 
-        public ClientDrawerService(IOptions<AppSettingsModel> options, IWebHostEnvironment env, IHttpContextAccessor httpContextAccessor, IWebHostEnvironment webHostEnvironment)
+        public ClientDrawerService(IOptions<AppSettingsModel> options, IWebHostEnvironment env, IHttpContextAccessor httpContextAccessor, IWebHostEnvironment webHostEnvironment, IBackOfficeSecurityAccessor backOfficeSecurityAccessor)
         {
             _options = options.Value;
             _env = env;
             _currentUri = new(httpContextAccessor.HttpContext?.Request.GetDisplayUrl() ?? throw new Exception("Unable to capture current request URL"));
-            _environmentModels = _options.Environments?.Select(x => new EnvironmentModel(x.Name,
-                                                                                       new Uri(x.BaseUrl),
-                                                                                       _currentUri,
-                                                                                       x.UmbracoPathOrUrl,
-                                                                                       x.DisableUmbracoUrl,
-                                                                                       x.AlternativeHostnames,
-                                                                                       x.IconClass)).ToList()
-
-                                                                                       ?? Enumerable.Empty<EnvironmentModel>().ToList();
             _webHostEnvironment = webHostEnvironment;
+            _backOfficeSecurityAccessor = backOfficeSecurityAccessor;
         }
 
-        public DataModel GetDataWorker()
+        private List<EnvironmentModel> GetFilteredEnvironmentModels()
         {
+            if (_options.Environments == null || !_options.Environments.Any())
+            {
+                return new List<EnvironmentModel>();
+            }
+
+            // Get current user's group aliases
+            var currentUser = _backOfficeSecurityAccessor.BackOfficeSecurity?.CurrentUser;
+            var userGroupAliases = currentUser?.Groups.Select(g => g.Alias).ToList() ?? new List<string>();
+
+            // Filter environments based on user groups
+            var filteredEnvironments = _options.Environments
+                .Where(env =>
+                {
+                    // If no UserGroups specified, environment is accessible to all
+                    if (env.UserGroups == null || env.UserGroups.Length == 0)
+                        return true;
+
+                    // Check if user is in any of the allowed groups (trim for consistency)
+                    return env.UserGroups
+                        .Select(g => g.Trim())
+                        .Any(g => userGroupAliases.Contains(g, StringComparer.OrdinalIgnoreCase));
+                })
+                .Select(x => new EnvironmentModel(
+                    x.Name,
+                    new Uri(x.BaseUrl),
+                    _currentUri,
+                    x.UmbracoPathOrUrl,
+                    x.DisableUmbracoUrl,
+                    x.AlternativeHostnames,
+                    x.IconClass))
+                .ToList();
+
+            return filteredEnvironments;
+        }
+
+        public DataModel? GetDataWorker()
+        {
+            var environmentModels = GetFilteredEnvironmentModels();
+
+            // If user has no accessible environments, return null
+            if (!environmentModels.Any())
+            {
+                return null;
+            }
             string heading = _options.ClientName;
             string platformAssemblyName = _options.Platform?.AssemblyName ?? "";
             string platformAssemblyVersion = GetAssemblyVersion(platformAssemblyName, _options.Platform?.VersionSource, _options.Platform?.VersionRegEx);
@@ -56,7 +93,7 @@ namespace ClientDrawer.Core.Services
             {
                 Heading = heading,
                 PrimaryAssembly = new AssemblyModel(platformAssemblyName, platformAssemblyVersion),
-                Environments = _environmentModels,
+                Environments = environmentModels,
                 SystemInformation = new()
                 {
                     Enabled = _options.SystemInformation.Enabled,
@@ -69,15 +106,26 @@ namespace ClientDrawer.Core.Services
             return dataModel;
         }
 
-        public HeaderActionModel GetHeaderActionDataWorker() => new()
+        public HeaderActionModel? GetHeaderActionModel()
         {
-            ClientName = _options.ClientName,
-            IconClass = _options.IconClass,
-            IconImageFilePath = _options.IconImageFilePath,
-            HeaderButtonMode = _options.HeaderButtonMode.ToString(),
-            CurrentEnvironmentName = _environmentModels.FirstOrDefault(x => x.IsCurrent)?.Name ?? "Unknown Environment",
-            IconSVG = ReadSvgFile(_options.IconImageFilePath)
-        };
+            var environmentModels = GetFilteredEnvironmentModels();
+
+            // If user has no accessible environments, return null
+            if (!environmentModels.Any())
+            {
+                return null;
+            }
+
+            return new HeaderActionModel
+            {
+                ClientName = _options.ClientName,
+                IconClass = _options.IconClass,
+                IconImageFilePath = _options.IconImageFilePath,
+                HeaderButtonMode = _options.HeaderButtonMode.ToString(),
+                CurrentEnvironmentName = environmentModels.FirstOrDefault(x => x.IsCurrent)?.Name ?? "Unknown Environment",
+                IconSVG = ReadSvgFile(_options.IconImageFilePath)
+            };
+        }
 
         private static string GetAssemblyVersion(string assemblyName, AssemblyVersionEnum? versionSource, string? versionRegEx = null)
         {

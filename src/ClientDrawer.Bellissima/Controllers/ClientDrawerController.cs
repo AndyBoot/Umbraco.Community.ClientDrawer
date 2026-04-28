@@ -7,6 +7,7 @@ using Umbraco.Cms.Api.Common.Attributes;
 using Umbraco.Cms.Api.Common.Filters;
 using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.Cache;
+using Umbraco.Cms.Core.Security;
 using Umbraco.Cms.Web.Common.Authorization;
 using Umbraco.Cms.Web.Common.Routing;
 using Umbraco.Extensions;
@@ -19,27 +20,49 @@ namespace ClientDrawer.Bellissima.Controllers
     [Authorize(Policy = AuthorizationPolicies.BackOfficeAccess)]
     [JsonOptionsName(Constants.JsonOptionsNames.BackOffice)]
     [BackOfficeRoute("clientdrawer/api/v{version:apiVersion}")]
-    public class ClientDrawerController
+    public class ClientDrawerController : ControllerBase
     {
         private readonly IClientDrawerService _clientDrawerService;
         private readonly AppCaches _appCaches;
+        private readonly IBackOfficeSecurityAccessor _backOfficeSecurityAccessor;
         private const int CACHE_MINS = 1440; // 1 day
 
 
-        public ClientDrawerController(IClientDrawerService clientDrawerService, AppCaches appCaches)
+        public ClientDrawerController(IClientDrawerService clientDrawerService, AppCaches appCaches, IBackOfficeSecurityAccessor backOfficeSecurityAccessor)
         {
             _clientDrawerService = clientDrawerService;
             _appCaches = appCaches;
+            _backOfficeSecurityAccessor = backOfficeSecurityAccessor;
         }
 
         [HttpGet("getdata")]
         [ProducesResponseType(typeof(DataModel), 200)]
-        public DataModel? GetData() => GetSetCacheItem(_clientDrawerService.GetDataWorker, "ClientDrawerGetData", CACHE_MINS);
+        [ProducesResponseType(204)]
+        public IActionResult GetData()
+        {
+            var userId = _backOfficeSecurityAccessor.BackOfficeSecurity?.CurrentUser?.Id ?? 0;
+            var data = GetSetCacheItem(_clientDrawerService.GetDataWorker, $"ClientDrawerGetData_{userId}", CACHE_MINS);
+            if (data == null)
+            {
+                return NoContent();
+            }
+            return new OkObjectResult(data);
+        }
 
 
         [HttpGet("getheaderactiondata")]
         [ProducesResponseType(typeof(HeaderActionModel), 200)]
-        public HeaderActionModel? GetHeaderActionData() => GetSetCacheItem(_clientDrawerService.GetHeaderActionDataWorker, "ClientDrawerGetHeaderActionDataWorker", CACHE_MINS);
+        [ProducesResponseType(204)]
+        public IActionResult GetHeaderActionData()
+        {
+            var userId = _backOfficeSecurityAccessor.BackOfficeSecurity?.CurrentUser?.Id ?? 0;
+            var data = GetSetCacheItem(_clientDrawerService.GetHeaderActionModel, $"ClientDrawerGetHeaderActionDataWorker_{userId}", CACHE_MINS);
+            if (data == null)
+            {
+                return NoContent();
+            }
+            return new OkObjectResult(data);
+        }
 
         private T? GetSetCacheItem<T>(Func<T> methodName, string cacheName, double expiryMins)
         {
