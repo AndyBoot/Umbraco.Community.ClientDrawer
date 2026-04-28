@@ -54,17 +54,13 @@ namespace ClientDrawer.Core.Services
                 .Where(env =>
                 {
                     // If no UserGroups specified, environment is accessible to all
-                    if (string.IsNullOrWhiteSpace(env.UserGroups))
+                    if (env.UserGroups == null || env.UserGroups.Length == 0)
                         return true;
 
-                    // Parse comma-separated user groups
-                    var allowedGroups = env.UserGroups
-                        .Split(',', StringSplitOptions.RemoveEmptyEntries)
+                    // Check if user is in any of the allowed groups (trim for consistency)
+                    return env.UserGroups
                         .Select(g => g.Trim())
-                        .ToList();
-
-                    // Check if user is in any of the allowed groups
-                    return allowedGroups.Any(g => userGroupAliases.Contains(g, StringComparer.OrdinalIgnoreCase));
+                        .Any(g => userGroupAliases.Contains(g, StringComparer.OrdinalIgnoreCase));
                 })
                 .Select(x => new EnvironmentModel(
                     x.Name,

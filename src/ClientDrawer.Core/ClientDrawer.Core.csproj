@@ -14,8 +14,8 @@
 		<Description>This is a general dependency of Umbraco.Community.ClientDrawer. You do not need to install this yourself.</Description>
 		<PackageTags>ClientDrawer;Client;Drawer;Changelog;Change;Log;Logs;Environment;Environments;HeaderApp</PackageTags>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-		<Version>17.0.1</Version>
-		<PackageVersion>17.0.1</PackageVersion>
+		<Version>17.1.0</Version>
+		<PackageVersion>17.1.0</PackageVersion>
 		<Authors>Andy Boot, Jeavon</Authors>
 		<Copyright>2026 © Andy Boot</Copyright>
 		<PackageProjectUrl>https://github.com/AndyBoot/Umbraco.Community.ClientDrawer</PackageProjectUrl>

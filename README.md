@@ -52,7 +52,7 @@ Simply search for the `Umbraco.Community.ClientDrawer` NuGet package and add it 
         "BaseUrl": "https://preview.samplewebsite.com",
         "AlternativeHostnames": [ "samplewebsite-preview.azurewebsites.net" ],
         "IconClass": "icon-mindmap",
-        "UserGroups": "admin,editor"
+        "UserGroups": [ "admin", "editor" ]
       },
       {
         "Name": "Staging",
@@ -115,10 +115,10 @@ Simply search for the `Umbraco.Community.ClientDrawer` NuGet package and add it 
 | DisableUmbracoUrl          	| `bool` 	| `false`  	| | 1.0.0 |
 | AlternativeHostnames          	| `string[]` 	| `null`  	| `["test.samplewebsite.com", "nocache.samplewebsite.com"]` | 1.0.0 |
 | IconClass          	| `string` 	| `"icon-globe"`  	| `"icon-mindmap"` | 1.0.0 |
-| UserGroups          	| `string` 	| `null`  	| `"admin,editor"` or `"admin"` | 17.0.1 |
+| UserGroups          	| `string[]` 	| `null`  	| `["admin", "editor"]` or `["admin"]` | 17.1.0 |
 
 **Note on UserGroups**: 
-- Use comma-separated user group aliases (e.g., `"admin,editor,writer"`)
+- Use a string array of user group aliases (e.g., `["admin", "editor", "writer"]`)
 - If omitted or `null`, the environment is accessible to all backoffice users
 - If specified, only users belonging to one of the listed groups can see that environment
 - If a user has no access to any environments, Client Drawer is automatically hidden
@@ -180,7 +180,7 @@ If you're embedding this file as a resource within a DLL, also use the `ClientDr
 
 |Version    |Change Type    |Description     |
 |-----------|---------------|--------------- |
-|17.0.1     |Feature        |Added UserGroups property to Environment configuration for per-environment access control. Client Drawer automatically hides when users have no accessible environments.|
+|17.1.0     |Feature        |Added UserGroups property to Environment configuration for per-environment access control. Client Drawer automatically hides when users have no accessible environments.|
 |17.0.0     |New release    |Umbraco v17 compatibility|
 |15.0.0.1   |Fix            |Resolved an issue with the Client Drawer Core dependency on first install. Also, Removal of some unnecessary files, thanks [Jeavon](https://github.com/Jeavon)!|
 |15.0.0     |New release    |Compatibility with Umbraco v15|
